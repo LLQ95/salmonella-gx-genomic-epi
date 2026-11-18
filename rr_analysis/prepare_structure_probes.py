@@ -9,7 +9,8 @@ import os
 import sys
 from Bio import SeqIO
 
-sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 # One representative gene is kept for each structural marker. Repeated IS26
 # copies are identical, so a single IS26 probe is used and its copy number is

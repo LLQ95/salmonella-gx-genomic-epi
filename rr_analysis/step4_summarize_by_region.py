@@ -9,7 +9,8 @@ import os
 import sys
 import pandas as pd
 
-sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 
 def main():

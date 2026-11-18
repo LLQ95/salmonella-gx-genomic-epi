@@ -8,7 +8,8 @@ import os
 import sys
 import subprocess
 
-sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 CARGO_FAMILIES = ["blaTEM", "strA", "strB", "sul2", "tetB"]
 FAMILY_PREFIX = {

@@ -9,7 +9,8 @@ CSV table of close pairs with reference metadata.
 import argparse
 import json
 import sys
-sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 import numpy as np
 import pandas as pd
 

@@ -8,7 +8,8 @@ import argparse
 import sys
 import pandas as pd
 
-sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 
 def read_exclusion(path):

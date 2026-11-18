@@ -12,7 +12,8 @@ import sys
 import time
 import urllib.request
 
-sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 RR3_GENBANK = "KR856283"
 
