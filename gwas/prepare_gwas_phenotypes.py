@@ -19,17 +19,28 @@ def strain_from_pointfinder(path):
     return parts[1] if len(parts) > 1 else path
 
 
+def load_samples(metadata_path, trait_table_path):
+    if metadata_path and os.path.exists(metadata_path):
+        with open(metadata_path, encoding="utf-8") as handle:
+            metadata = json.load(handle)
+        return sorted(metadata.keys())
+    if trait_table_path and os.path.exists(trait_table_path):
+        trait = pd.read_csv(trait_table_path, sep="\t", dtype=str)
+        return sorted(trait["node"])
+    raise FileNotFoundError(
+        "Neither a unified metadata file nor a trait table was found.")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--pointfinder", required=True)
     ap.add_argument("--resfinder", required=True)
-    ap.add_argument("--metadata", required=True)
+    ap.add_argument("--metadata")
+    ap.add_argument("--trait-table")
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
-    with open(args.metadata, encoding="utf-8") as handle:
-        metadata = json.load(handle)
-    samples = sorted(metadata.keys())
+    samples = load_samples(args.metadata, args.trait_table)
     table = pd.DataFrame({"samples": samples})
     for column in ("qrdr", "gyrA", "parC", "qnrS1", "oqxAB"):
         table[column] = 0

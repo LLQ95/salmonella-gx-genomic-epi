@@ -11,6 +11,7 @@ ALIGNMENT="${ALIGNMENT:-${WORKDIR}/joint.core.aln}"
 POINTFINDER="${POINTFINDER:-${WORKDIR}/guangxi_1874/pointfinder.tab}"
 RESFINDER="${RESFINDER:-${WORKDIR}/guangxi_1874/resfinder.tab}"
 METADATA="${METADATA:-${WORKDIR}/unified_metadata.json}"
+TRAIT_TABLE="${TRAIT_TABLE:-${WORKDIR}/trait_table.tsv}"
 MDS_COMPONENTS="${MDS_COMPONENTS:-10}"
 PHENOTYPES="${OUTDIR}/gwas_phenotypes.tsv"
 SIMILARITY="${OUTDIR}/core_similarity.tsv"
@@ -29,6 +30,7 @@ python "${SCRIPT_DIR}/prepare_gwas_phenotypes.py" \
     --pointfinder "${POINTFINDER}" \
     --resfinder "${RESFINDER}" \
     --metadata "${METADATA}" \
+    --trait-table "${TRAIT_TABLE}" \
     --out "${PHENOTYPES}"
 
 echo "=== prepare similarity matrix ==="
