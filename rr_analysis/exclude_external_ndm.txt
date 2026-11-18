@@ -1,0 +1,7 @@
+# External NDM strains without trait-table metadata.
+# These labels are excluded from RR typing and downstream analysis.
+2011106
+2018217
+2022174
+2023525
+2023579
