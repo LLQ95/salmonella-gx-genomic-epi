@@ -13,7 +13,8 @@ POINTFINDER="${POINTFINDER:-${ANNOTATION_DIR}/pointfinder.tab}"
 RESFINDER="${RESFINDER:-${ANNOTATION_DIR}/resfinder.tab}"
 METADATA="${METADATA:-${WORKDIR}/unified_metadata.json}"
 TRAIT_TABLE="${TRAIT_TABLE:-${WORKDIR}/trait_table.tsv}"
-MDS_COMPONENTS="${MDS_COMPONENTS:-10}"
+MDS_TYPE="${MDS_TYPE:-classic}"
+MAX_DIMENSIONS="${MAX_DIMENSIONS:-10}"
 PHENOTYPES="${OUTDIR}/gwas_phenotypes.tsv"
 SIMILARITY="${OUTDIR}/core_similarity.tsv"
 
@@ -49,7 +50,8 @@ for phenotype in qrdr gyrA parC qnrS1 oqxAB; do
         --phenotypes "${PHENOTYPES}" \
         --phenotype-column "${phenotype}" \
         --similarity "${SIMILARITY}" \
-        --mds "${MDS_COMPONENTS}" \
+        --mds "${MDS_TYPE}" \
+        --max-dimensions "${MAX_DIMENSIONS}" \
         --output-patterns "${OUTDIR}/${phenotype}_patterns.txt" \
         > "${OUTDIR}/${phenotype}_gwas.tsv"
 done
